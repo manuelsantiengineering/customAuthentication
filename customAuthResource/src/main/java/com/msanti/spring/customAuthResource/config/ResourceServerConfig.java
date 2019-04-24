@@ -16,7 +16,7 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 @EnableResourceServer
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
-private static final String RESOURCE_ID = "oauth2-server";
+	private static final String RESOURCE_ID = "oauth2-server";
 
 	@Override
 	public void configure(ResourceServerSecurityConfigurer resources) {

@@ -26,7 +26,7 @@ public class WebController {
 	
 	@GetMapping("/privatePage")
 	public String showControlPage(Model model) {
-		logger.info("This is privaet page ");
+		logger.info("This is private page ");
 	    setProcessingData(model, "Private Page");
 	    return "private-page";
 	}
@@ -59,8 +59,12 @@ public class WebController {
 			logger.info("=====>"+grantedAuthority.getAuthority());
 		}
 		
-		 boolean hasUserRole = SecurityContextHolder.getContext().getAuthentication().getAuthorities().stream()
-		            .anyMatch(r -> r.getAuthority().equals(roleName));
+		 boolean hasUserRole = SecurityContextHolder
+				 .getContext()
+				 .getAuthentication()
+				 .getAuthorities()
+				 .stream()
+		         .anyMatch(r -> r.getAuthority().equals(roleName));
 		 
 		 return hasUserRole;
 	}
@@ -71,8 +75,9 @@ public class WebController {
 	 */
 	@ModelAttribute("validUserLogin")
 	public boolean isUserLoggedIn() {
-		return SecurityContextHolder.getContext().getAuthentication() != null && SecurityContextHolder.getContext().getAuthentication().isAuthenticated() &&
-				 //when Anonymous Authentication is enabled
+		return SecurityContextHolder.getContext().getAuthentication() != null 
+				&& SecurityContextHolder.getContext().getAuthentication().isAuthenticated() 
+				&& //when Anonymous Authentication is enabled
 				 !(SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken); 
 	}
 	

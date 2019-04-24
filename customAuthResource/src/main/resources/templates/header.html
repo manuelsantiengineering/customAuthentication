@@ -24,8 +24,8 @@
 	<div th:fragment="header_navigation">
 		<div class="jumbotron text-center jumbotron-fluid" 
 				style="margin-bottom:0; padding:2rem 1 rem" >
-		     <h1>Authorization Server</h1>
-		     <p>Giving authorization...!!!</p>
+		     <h1>Resource Server</h1>
+		     <p>Get the data...!!!</p>
 		 </div>
 		 <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
 	        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -36,13 +36,18 @@
 	                <li class="nav-item">
 	                    <a class="nav-link" th:href="@{/}">Home</a>
 	                </li>
-	                <li class="nav-item" th:if="${validUserLogin == false}">
-	                    <a class="nav-link" th:href="@{/login/}">Login</a>
+	                <li class="nav-item" th:if="${validUserLogin == true}">
+	                    <a class="nav-link" th:href="@{/privatePage/}">Private Page</a>
 	                </li>
 	            </ul>
 			    <span th:if="${validUserLogin} == true" class="mr-sm-2 text-white border rounded py-1 px-1">
 			    	Hello, <b th:text="${currentUserName}">User Name</b>
                 </span>
+			    <div id="logged-in-info" th:if="${validUserLogin} == true"> 
+					<form method="post" th:action="@{/logout}">
+						<button type="submit" class="btn" value="Logout">Logout</button>
+					</form>
+				</div>
 	        </div>
 	    </nav>
     </div>
