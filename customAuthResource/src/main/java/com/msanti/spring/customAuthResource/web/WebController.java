@@ -34,13 +34,16 @@ public class WebController {
 	}
 	
 	@GetMapping("/customAuth")
-	public String authorizeUser(Model model,@Value("${custom.auth.authorization-uri}") String authorizationUri,
+	public String authorizeUser(Model model,
+			@Value("${custom.auth.authorization-uri}") String authorizationUri,
 			@Value("${custom.auth.client-id}") String clientId,
 			@Value("${custom.auth.client-secret}") String clientSecret,
 			@Value("${custom.auth.grant-type}") String grantType,
 			@Value("${custom.auth.response-type}") String responseType) {
 	    
-	    UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromHttpUrl(authorizationUri)
+	    UriComponentsBuilder uriBuilder = 
+	    		UriComponentsBuilder
+	    		.fromHttpUrl(authorizationUri)
                 .queryParam("username", clientId)
                 .queryParam("password", clientSecret)
                 .queryParam("grant_type", grantType)
