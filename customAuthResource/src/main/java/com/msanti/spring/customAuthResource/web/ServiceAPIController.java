@@ -35,13 +35,13 @@ public class ServiceAPIController {
 	@RequestMapping("/adminresource")
 	@PreAuthorize("hasAuthority('ADMIN') and #oauth2.hasScope('read') or (!#oauth2.isOAuth() and hasRole('ROLE_ADMIN'))")
 	public String adminResource(Principal user) {
-		return "{\"id\":\"" + user.getName() + "\",\"content\":\"Hello World\"}";
+		return "{\"id\":\"" + user.getName() + "\",\"content\":\"Hello World from Admin Resource\"}";
 	}
 	
 	@RequestMapping(value="/usergreeting", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
 	@PreAuthorize("hasAuthority('USER') and #oauth2.hasScope('read') or (!#oauth2.isOAuth() and hasRole('ROLE_USER'))")
 	public String userResource(Principal user) {
-		return "{\"id\":\"" + user.getName() + "\",\"content\":\"Hello World\"}";
+		return "{\"id\":\"" + user.getName() + "\",\"content\":\"Hello World from User Greeting\"}";
 	}
 	
 	@PreAuthorize("hasAuthority('USER') or #oauth2.hasScope('read') or (!#oauth2.isOAuth() and hasAuthority('USER'))")

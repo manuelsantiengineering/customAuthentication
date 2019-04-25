@@ -10,6 +10,6 @@ public interface AuthorizationConstants {
 	String RESOURCE_ID					= "oauth2-server";
 	
 	/* Token Details  */
-	String TOKEN_KEY					= "123";
+	String TOKEN_KEY					= "tokenKey";
 	
 }
