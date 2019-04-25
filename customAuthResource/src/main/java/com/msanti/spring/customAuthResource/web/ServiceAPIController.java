@@ -51,11 +51,11 @@ public class ServiceAPIController {
     	SampleUser s1 = new SampleUser();
     	SampleUser s2 = new SampleUser();
     	
-    	s1.setFirstName("Nilang");
-    	s1.setLastName("Patel");
+    	s1.setFirstName("ListUser01");
+    	s1.setLastName("01LastName");
     	
-    	s2.setFirstName("Komal");
-    	s2.setLastName("Patel");
+    	s2.setFirstName("ListUser02");
+    	s2.setLastName("02LastName");
     	
         List<SampleUser> users = new ArrayList<SampleUser>();
         

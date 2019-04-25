@@ -12,17 +12,17 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
+import com.msanti.spring.customAuthResource.constants.AuthorizationConstants;
+
 @Configuration
 @EnableResourceServer
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
-
-	private static final String RESOURCE_ID = "oauth2-server";
 
 	@Override
 	public void configure(ResourceServerSecurityConfigurer resources) {
 		resources
 			.tokenStore(tokenStore())
-			.resourceId(RESOURCE_ID);
+			.resourceId(AuthorizationConstants.RESOURCE_ID);
 	}
 
 	@Override
@@ -41,7 +41,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	@Bean
     public JwtAccessTokenConverter accessTokenConverter() {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        converter.setSigningKey("123");
+        converter.setSigningKey(AuthorizationConstants.TOKEN_KEY);
         return converter;
     }
  

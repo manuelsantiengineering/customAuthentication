@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.msanti.spring.customAuthResource.constants.AuthorizationConstants;
+
 @Controller
 public class WebController {
 
@@ -83,7 +85,7 @@ public class WebController {
 	
 	@ModelAttribute("hasUserRole")
 	public boolean checkIfUserHasUserRole(){
-		return checkIfUserHasRole("USER");
+		return checkIfUserHasRole(AuthorizationConstants.ROLE_USER);
 	}
 	
 	/**

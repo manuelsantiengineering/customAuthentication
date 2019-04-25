@@ -19,6 +19,8 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
+import com.msanti.spring.customAuth.constants.AuthorizationConstants;
+
 @Configuration
 @EnableAuthorizationServer
 public class CustomAuthorizationConfig extends AuthorizationServerConfigurerAdapter{
@@ -41,18 +43,18 @@ public class CustomAuthorizationConfig extends AuthorizationServerConfigurerAdap
     public void configure(ClientDetailsServiceConfigurer clients) 
       throws Exception {
         clients.inMemory()
-          .withClient("c1")
-          .authorizedGrantTypes("implicit")
-          .scopes("read", "write", "trust")
-          .secret(passwordEncoder.encode("123"))
-          .redirectUris("http://localhost:8082/privatePage")
-          .resourceIds("oauth2-server");
+          .withClient(AuthorizationConstants.CLIENT_ID)
+          .authorizedGrantTypes(AuthorizationConstants.GRANT_TYPE)
+          .scopes(AuthorizationConstants.SCOPES)
+          .secret(passwordEncoder.encode(AuthorizationConstants.SECRET))
+          .redirectUris(AuthorizationConstants.REDIRECT_URL)
+          .resourceIds(AuthorizationConstants.RESOURCE_ID);
     }
     
     @Bean
     public JwtAccessTokenConverter accessTokenConverter() {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        converter.setSigningKey("123");
+        converter.setSigningKey(AuthorizationConstants.TOKEN_KEY);
         return converter;
     }
     
@@ -78,7 +80,7 @@ public class CustomAuthorizationConfig extends AuthorizationServerConfigurerAdap
         defaultTokenServices.setTokenStore(tokenStore());
         // Since the grant type is implicit, the refresh token is not allowed
         defaultTokenServices.setSupportRefreshToken(false);
-        defaultTokenServices.setAccessTokenValiditySeconds(120);
+        defaultTokenServices.setAccessTokenValiditySeconds(AuthorizationConstants.TOKEN_TIMEOUT_SEC);
         defaultTokenServices.setTokenEnhancer(accessTokenConverter());
         return defaultTokenServices;
     }

@@ -12,6 +12,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 //import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.msanti.spring.customAuth.constants.AuthorizationConstants;
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -33,7 +35,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) 
       throws Exception {
         auth.inMemoryAuthentication()
-          .withUser("tomatito").password(new BCryptPasswordEncoder().encode("123")).authorities("USER","ADMIN");
+          .withUser(AuthorizationConstants.IN_MEM_USER)
+          .password(new BCryptPasswordEncoder().encode(AuthorizationConstants.IN_MEM_PASS))
+          .authorities(AuthorizationConstants.ROLE_USER, AuthorizationConstants.ROLE_ADMIN);
     }
 
     @Override
