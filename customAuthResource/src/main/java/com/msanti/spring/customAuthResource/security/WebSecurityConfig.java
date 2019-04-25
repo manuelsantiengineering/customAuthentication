@@ -9,11 +9,12 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	
-    	@Override
-    	protected void configure(HttpSecurity http) throws Exception {
-    	   http
-    	   	.authorizeRequests()
-    	   	.antMatchers("/","/customAuth").permitAll()
-    		.anyRequest().authenticated();
-    	}    	
+	// Here we basically declared certain paths to be accessible by all
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+	   http
+	   	.authorizeRequests()
+	   	.antMatchers("/","/customAuth").permitAll()
+		.anyRequest().authenticated();
+	}    	
 }

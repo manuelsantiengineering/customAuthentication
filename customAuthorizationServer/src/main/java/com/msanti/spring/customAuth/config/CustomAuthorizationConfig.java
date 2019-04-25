@@ -1,7 +1,7 @@
 package com.msanti.spring.customAuth.config;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -25,7 +25,7 @@ import com.msanti.spring.customAuth.constants.AuthorizationConstants;
 @EnableAuthorizationServer
 public class CustomAuthorizationConfig extends AuthorizationServerConfigurerAdapter{
 	
-	private Logger logger =  LoggerFactory.getLogger(CustomAuthorizationConfig.class);
+//	private Logger logger =  LoggerFactory.getLogger(CustomAuthorizationConfig.class);
 	
 	@Autowired
     @Qualifier("authenticationManager")
@@ -47,7 +47,7 @@ public class CustomAuthorizationConfig extends AuthorizationServerConfigurerAdap
           .authorizedGrantTypes(AuthorizationConstants.GRANT_TYPE)
           .scopes(AuthorizationConstants.SCOPES)
           .secret(passwordEncoder.encode(AuthorizationConstants.SECRET))
-          .redirectUris(AuthorizationConstants.REDIRECT_URL)
+          .redirectUris(AuthorizationConstants.REDIRECT_URI)
           .resourceIds(AuthorizationConstants.RESOURCE_ID);
     }
     

@@ -10,7 +10,7 @@ public interface AuthorizationConstants {
 	String CLIENT_ID 					= "clientId";
 	String GRANT_TYPE 					= "implicit";
 	String SECRET 						= "secret";
-	String REDIRECT_URL					= "http://localhost:8080/privatePage";
+	String REDIRECT_URI					= "http://localhost:8080/privatePage";
 	String RESOURCE_ID					= "oauth2-server";
 	String[] SCOPES 					= {"read", "write", "trust"};
 	

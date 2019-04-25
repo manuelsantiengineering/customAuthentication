@@ -14,6 +14,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.msanti.spring.customAuthResource.constants.AuthorizationConstants;
 
+// This controller will show the page from which we can initiate authorization.
 @Controller
 public class WebController {
 
@@ -34,7 +35,8 @@ public class WebController {
 	}
 	
 	@GetMapping("/customAuth")
-	public String authorizeUser(Model model,
+	public String authorizeUser(
+			Model model,
 			@Value("${custom.auth.authorization-uri}") String authorizationUri,
 			@Value("${custom.auth.client-id}") String clientId,
 			@Value("${custom.auth.client-secret}") String clientSecret,

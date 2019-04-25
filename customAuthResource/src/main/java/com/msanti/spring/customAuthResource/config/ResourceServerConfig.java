@@ -25,6 +25,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 			.resourceId(AuthorizationConstants.RESOURCE_ID);
 	}
 
+	// Here we establish where are the secured resources in the resource server.
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
         http
