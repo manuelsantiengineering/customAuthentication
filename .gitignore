@@ -1,8 +1,8 @@
 HELP.md
 /customAuthorizationServer/target/
 /customAuthResource/target/
-/customAuthResource/.mvn/wrapper/maven-wrapper.jar
-/customAuthorizationServer/.mvn/wrapper/maven-wrapper.jar
+/customAuthResource/!.mvn/wrapper/maven-wrapper.jar
+/customAuthorizationServer/!.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
 .apt_generated
